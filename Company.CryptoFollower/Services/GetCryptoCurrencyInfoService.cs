@@ -6,40 +6,34 @@ namespace Company.CryptoFollower.Services;
 
 public class GetCryptoCurrencyInfoService : IGetCryptoCurrencyInfoService
 {
-    // TODO add key to Azure Key Vault
-    private readonly string API_KEY = "d2bbeda7-77a0-458f-90e9-cffac1401080";
+    private readonly HttpClient _client;
     
-    public async Task<CryptoCurrencyInfo> Get()
+    public GetCryptoCurrencyInfoService(IHttpClientFactory httpClientFactory)
+    {
+        _client = httpClientFactory.CreateClient("coingeckoclient");
+        _client.BaseAddress = new Uri("https://api.coingecko.com");
+    }
+
+    public async Task<CryptoCurrencyInfo> Get(string id, string priceCurrency)
     {
         try
         {
-            Console.WriteLine(makeAPICall());
+            var result =
+                await _client.GetAsync("/api/v3/simple/price" + "?ids=" + id + "&" + "vs_currencies=" + priceCurrency);
+            result.EnsureSuccessStatusCode();
+            var str =  await result.Content.ReadAsStringAsync();
+            Console.WriteLine(str);
         }
         catch (WebException e)
         {
             Console.WriteLine(e.Message);
         }
-
-        return new CryptoCurrencyInfo()
+        catch
         {
-        };
-    }
-    
-    private string makeAPICall()
-    {
-        var URL = new UriBuilder("https://sandbox-api.coinmarketcap.com/v1/cryptocurrency/listings/latest");
+            Console.WriteLine("HTTP Response was invalid or could not be deserialised.");
+        }
 
-        var queryString = HttpUtility.ParseQueryString(string.Empty);
-        queryString["start"] = "1";
-        queryString["limit"] = "5000";
-        queryString["convert"] = "USD";
-
-        URL.Query = queryString.ToString();
-
-        var client = new WebClient();
-        client.Headers.Add("X-CMC_PRO_API_KEY", API_KEY);
-        client.Headers.Add("Accepts", "application/json");
-        return client.DownloadString(URL.ToString());
-
+        return new CryptoCurrencyInfo();
+        
     }
 }

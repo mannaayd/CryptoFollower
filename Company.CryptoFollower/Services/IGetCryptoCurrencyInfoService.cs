@@ -4,5 +4,5 @@ namespace Company.CryptoFollower.Services;
 
 public interface IGetCryptoCurrencyInfoService
 {
-    public Task<CryptoCurrencyInfo> Get();
+    public Task<CryptoCurrencyInfo> Get(string id, string priceCurrency);
 }

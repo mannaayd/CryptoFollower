@@ -4,20 +4,21 @@ using Microsoft.Extensions.Logging;
 
 namespace Company.CryptoFollower;
 
-public static class CryptoNotifier
+public class CryptoNotifier
 {
-    // private readonly IGetCryptoCurrencyInfoService _getCryptoCurrencyInfoService;
-    //
-    // public CryptoNotifier(IGetCryptoCurrencyInfoService getCryptoCurrencyInfoService)
-    // {
-    //     _getCryptoCurrencyInfoService = getCryptoCurrencyInfoService;
-    // }
+    private readonly IGetCryptoCurrencyInfoService _getCryptoCurrencyInfoService;
+    
+    public CryptoNotifier(IGetCryptoCurrencyInfoService getCryptoCurrencyInfoService)
+    {
+        _getCryptoCurrencyInfoService = getCryptoCurrencyInfoService;
+    }
+    
 
     [Function("CryptoNotifier")]
-    public static void Run([TimerTrigger("*/15 * * * * *")] MyInfo myTimer, FunctionContext context)
+    public void Run([TimerTrigger("*/15 * * * * *")] MyInfo myTimer, FunctionContext context)
     {
-        Console.WriteLine("1");
-        
+        _getCryptoCurrencyInfoService.Get("bitcoin", "usd");
+
     }
 }
 
