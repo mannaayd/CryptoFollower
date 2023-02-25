@@ -1,6 +1,7 @@
 ﻿using System.Net;
-using System.Web;
+using Company.CryptoFollower.Models;
 using Company.CryptoFollower.Services.Dto;
+using Newtonsoft.Json;
 
 namespace Company.CryptoFollower.Services;
 
@@ -14,15 +15,20 @@ public class GetCryptoCurrencyInfoService : IGetCryptoCurrencyInfoService
         _client.BaseAddress = new Uri("https://api.coingecko.com");
     }
 
-    public async Task<CryptoCurrencyInfo> Get(string id, string priceCurrency)
+    public async Task<Bitcoin> GetBitcoinInfo(string id, string priceCurrency)
     {
+        var bitcoin = new Bitcoin();
         try
         {
             var result =
                 await _client.GetAsync("/api/v3/simple/price" + "?ids=" + id + "&" + "vs_currencies=" + priceCurrency);
             result.EnsureSuccessStatusCode();
             var str =  await result.Content.ReadAsStringAsync();
-            Console.WriteLine(str);
+            var bitcoinDto = JsonConvert.DeserializeObject<BitcoinDto>(str);
+            if (bitcoinDto == null)
+                throw new NullReferenceException("Cant retrieve data from remote API");
+            Int32.TryParse(bitcoinDto.bitcoin.usd, out int parseResult);
+            bitcoin.price = parseResult;
         }
         catch (WebException e)
         {
@@ -32,8 +38,6 @@ public class GetCryptoCurrencyInfoService : IGetCryptoCurrencyInfoService
         {
             Console.WriteLine("HTTP Response was invalid or could not be deserialised.");
         }
-
-        return new CryptoCurrencyInfo();
-        
+        return bitcoin;
     }
 }
