@@ -1,42 +1,44 @@
 ﻿using Company.CryptoFollower.Services;
 using Microsoft.Azure.Functions.Worker;
-using Microsoft.Extensions.Logging;
-using System.Configuration;
+using Company.CryptoFollower.Storage;
 
 namespace Company.CryptoFollower;
 
 public class CryptoFollower
 {
-    private readonly IGetCryptoCurrencyInfoService _getCryptoCurrencyInfoService;
+    private readonly IGetCoinInfoService _getCoinInfoService;
 
     private readonly string _followedCryptoCurrency;
 
     private readonly string _targetPriceCurrency;
 
-    public CryptoFollower()
-    {
-        _followedCryptoCurrency = Environment.GetEnvironmentVariable("FollowedCryptoCurrency")!;
-        _targetPriceCurrency = Environment.GetEnvironmentVariable("TargetPriceCurrencyCode")!;
-    }
-
     //  private readonly ILogger<CryptoFollower> _logger;
-    public CryptoFollower(IGetCryptoCurrencyInfoService getCryptoCurrencyInfoService
+    public CryptoFollower(IGetCoinInfoService getCoinInfoService
    //     , ILogger<CryptoFollower> logger
         )
     {
-        _getCryptoCurrencyInfoService = getCryptoCurrencyInfoService;
+        _getCoinInfoService = getCoinInfoService;
     //    _logger = logger;
+        _followedCryptoCurrency = Environment.GetEnvironmentVariable("FollowedCryptoCurrency")!;
+        _targetPriceCurrency = Environment.GetEnvironmentVariable("TargetPriceCurrencyCode")!;
     }
      
     // TODO Add storing historical data into Azure Data Storage
     // TODO Add notifying user about price changes via email using Azure logic app
     // TODO Optional add notifying via Telegram bot
     [Function("CryptoFollower")]
-    public async Task Run([TimerTrigger("0 */5 * * * *", RunOnStartup = true)] MyInfo myTimer, FunctionContext context)
+    [TableOutput("OutputTable", Connection = "AzureWebJobsStorage")]
+    public async Task<CoinTableData> Run([TimerTrigger("0 */5 * * * *", RunOnStartup = true)] MyInfo myTimer, FunctionContext context)
     {
       //  _logger.Log(LogLevel.Information, "Start retrieving information about");
-        var bitcoinInfo = await _getCryptoCurrencyInfoService.GetBitcoinInfo(_followedCryptoCurrency, _targetPriceCurrency);
-        Console.WriteLine();
+        var coinInfo = await _getCoinInfoService.GetCoinInfo(_followedCryptoCurrency, _targetPriceCurrency);
+        //TODO conditional queue trigger for notifications 
+        return new CoinTableData
+        {
+            PartitionKey = "timer",
+            RowKey = Guid.NewGuid().ToString(),
+            Coin = coinInfo
+        };
     }
 }
 

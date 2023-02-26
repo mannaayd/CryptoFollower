@@ -8,7 +8,7 @@ var host = new HostBuilder()
     .ConfigureFunctionsWorkerDefaults()
     .ConfigureServices(s =>
     {
-        s.AddScoped<IGetCryptoCurrencyInfoService, GetCryptoCurrencyInfoService>();
+        s.AddScoped<IGetCoinInfoService, GetCoinInfoService>();
         s.AddHttpClient();
     })
     // .ConfigureLogging((context, builder) =>
