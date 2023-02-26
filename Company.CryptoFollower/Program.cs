@@ -9,6 +9,8 @@ var host = new HostBuilder()
     .ConfigureServices(s =>
     {
         s.AddScoped<IGetCoinInfoService, GetCoinInfoService>();
+        s.AddScoped<INotificationUserService, NotificationUserService>();
+        s.AddScoped<ITelegramNotifierService, TelegramNotifierService>();
         s.AddHttpClient();
     })
     // .ConfigureLogging((context, builder) =>

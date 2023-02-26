@@ -5,7 +5,7 @@ namespace Company.CryptoFollower.Storage;
 
 public class CoinTableData : Azure.Data.Tables.ITableEntity
 {
-    public required Coin Coin { get; set; }
+    public required double Price { get; set; }
     public required string PartitionKey { get; set; }
     public required string RowKey { get; set; }
     public DateTimeOffset? Timestamp { get; set; }

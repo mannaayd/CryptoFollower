@@ -15,9 +15,9 @@ public class GetCoinInfoService : IGetCoinInfoService
         _client.BaseAddress = new Uri("https://api.coingecko.com");
     }
 
-    public async Task<CoinWithChanges> GetCoinInfo(string id, string targetPriceCurrency)
+    public async Task<Coin> GetCoinInfo(string id, string targetPriceCurrency)
     {
-        var coin = new CoinWithChanges();
+        var coin = new Coin();
         try
         {
             var result =

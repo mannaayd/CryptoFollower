@@ -3,6 +3,6 @@
 namespace Company.CryptoFollower.Services;
 
 public interface INotificationUserService
-{
-    void Notify(CoinWithChanges coin);
+{ 
+    void Notify(Coin coin);
 }
