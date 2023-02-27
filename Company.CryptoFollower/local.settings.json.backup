@@ -1,0 +1,17 @@
+﻿{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "APPLICATIONINSIGHTS_CONNECTION_STRING": "",
+    "FollowedCryptoCurrency": "bitcoin",
+    "TargetPriceCurrencyCode": "usd",
+    "TelegramApiKey": "6054959054:AAEfYTh9XrXWK8WsudYCbwupMJFgtIYmGuY"
+    "AlertTriggerPrice": ""
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*",
+    "CORSCredentials": false
+  }
+}
