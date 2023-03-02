@@ -1,4 +1,5 @@
 ﻿using Company.CryptoFollower.Services;
+using Company.CryptoFollower.Storage;
 using Microsoft.Azure.Functions.Worker;
 
 namespace Company.CryptoFollower;
@@ -6,19 +7,21 @@ namespace Company.CryptoFollower;
 public class CryptoFollower
 {
     private readonly IGetCoinInfoService _getCoinInfoService;
-    private readonly INotificationUserService _notificationUserService;
+ //   private readonly INotificationUserService _notificationUserService;
+    private readonly IAzureTableRepository _repository;
 
     private readonly string _followedCryptoCurrency;
 
     private readonly string _targetPriceCurrency;
 
     //  private readonly ILogger<CryptoFollower> _logger;
-    public CryptoFollower(IGetCoinInfoService getCoinInfoService, ITelegramNotifierService telegramNotifierService, INotificationUserService notificationUserService
+    public CryptoFollower(IGetCoinInfoService getCoinInfoService, INotificationUserService notificationUserService, IAzureTableRepository repository
         //     , ILogger<CryptoFollower> logger
         )
     {
         _getCoinInfoService = getCoinInfoService;
-        _notificationUserService = notificationUserService;
+    //    _notificationUserService = notificationUserService;
+        _repository = repository;
         //    _logger = logger;
         _followedCryptoCurrency = Environment.GetEnvironmentVariable("FollowedCryptoCurrency")!;
         _targetPriceCurrency = Environment.GetEnvironmentVariable("TargetPriceCurrencyCode")!;
@@ -34,13 +37,14 @@ public class CryptoFollower
     {
       //  _logger.Log(LogLevel.Information, "Start retrieving information about");
         var coinInfo = await _getCoinInfoService.GetCoinInfo(_followedCryptoCurrency, _targetPriceCurrency);
-        _notificationUserService.Notify(coinInfo);
-        // return new CoinTableData
-        // {
-        //     PartitionKey = "timer",
-        //     RowKey = Guid.NewGuid().ToString(),
-        //     Price = coinInfo.Price
-        // };
+   //     _notificationUserService.Notify(coinInfo);
+        var data = new CoinTableData
+        {
+            PartitionKey = "coin-table",
+            RowKey = Guid.NewGuid().ToString(),
+            Price = coinInfo.Price
+        };
+        await _repository.AddCoinData(data);
     }
 }
 
