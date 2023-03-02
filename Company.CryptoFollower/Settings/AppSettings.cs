@@ -2,10 +2,10 @@
 
 public class AppSettings
 {
-    public string FollowedCryptoCurrency { get; set; }
-    public string TargetPriceCurrencyCode { get; set; }
-    public bool IsAlertTriggerAbovePrice { get; set; }
-    public bool IsNotifiedByMail { get; set; }
-    public bool IsNotifiedByTelegram { get; set; }
-    public double AlertTriggerPrice { get; set; }
+    public required string FollowedCryptoCurrency { get; set; }
+    public required string TargetPriceCurrencyCode { get; set; }
+    public required bool IsAlertTriggerAbovePrice { get; set; }
+    public required bool IsNotifiedByMail { get; set; }
+    public required bool IsNotifiedByTelegram { get; set; }
+    public required double AlertTriggerPrice { get; set; }
 }
