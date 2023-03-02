@@ -4,5 +4,5 @@ namespace Company.CryptoFollower.Services;
 
 public interface IAlertTriggerService
 {
-    bool CheckIfTriggered(Coin coin);
+    bool CheckIfTrigger(Coin coin);
 }

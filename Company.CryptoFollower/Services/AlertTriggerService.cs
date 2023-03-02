@@ -1,21 +1,21 @@
 ﻿using System.Globalization;
 using Company.CryptoFollower.Models;
+using Company.CryptoFollower.Settings;
+using Microsoft.Extensions.Options;
 
 namespace Company.CryptoFollower.Services;
 
 public class AlertTriggerService : IAlertTriggerService
 {
-    private readonly bool IsTriggerAbovePrice;
-    private readonly double TriggerPrice;
+    private readonly AppSettings _appSettings;
 
-    public AlertTriggerService()
+    public AlertTriggerService(IOptions<AppSettings> options)
     {
-        IsTriggerAbovePrice = bool.Parse(Environment.GetEnvironmentVariable("IsAlertTriggerAbovePrice")!);
-        TriggerPrice = double.Parse(Environment.GetEnvironmentVariable("AlertTriggerPrice")!, NumberStyles.Any);
+        _appSettings = options.Value;
     }
 
-    public bool CheckIfTriggered(Coin coin)
-        => IsTriggerAbovePrice
-            ? coin.Price > TriggerPrice
-            : coin.Price < TriggerPrice;
+    public bool CheckIfTrigger(Coin coin)
+        => _appSettings.IsAlertTriggerAbovePrice
+            ? coin.Price > _appSettings.AlertTriggerPrice
+            : coin.Price < _appSettings.AlertTriggerPrice;
 }

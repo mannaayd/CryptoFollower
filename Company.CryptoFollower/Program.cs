@@ -1,5 +1,6 @@
 using Azure.Data.Tables;
 using Company.CryptoFollower.Services;
+using Company.CryptoFollower.Settings;
 using Company.CryptoFollower.Storage;
 using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,7 @@ var host = new HostBuilder()
             b.AddTableServiceClient(context.Configuration["AzureWebJobsStorage"]);
         });
         s.AddHttpClient();
+        s.Configure<AppSettings>(context.Configuration);
         s.AddScoped<IGetCoinInfoService, GetCoinInfoService>();
         s.AddScoped<ITelegramNotifierService, TelegramNotifierService>();
         s.AddScoped<IMailNotifierService, MailNotifierService>();
