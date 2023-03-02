@@ -1,6 +1,6 @@
 ﻿namespace Company.CryptoFollower.Services;
 
-public interface INotifierService
+public interface ITelegramNotifierService
 {
     Task Notify(string message);
 }

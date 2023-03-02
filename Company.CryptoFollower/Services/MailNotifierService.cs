@@ -1,9 +1,10 @@
 ﻿namespace Company.CryptoFollower.Services;
 
-public class MailNotifierService : INotifierService
+public class MailNotifierService : IMailNotifierService
 {
     public Task Notify(string message)
     {
-        throw new NotImplementedException();
+        // TODO Implement
+        return Task.Delay(1);
     }
 }

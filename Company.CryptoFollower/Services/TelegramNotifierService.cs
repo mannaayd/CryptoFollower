@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Company.CryptoFollower.Services;
 
-public class TelegramNotifierService : INotifierService
+public class TelegramNotifierService : ITelegramNotifierService
 {
     private readonly HttpClient _client;
     private readonly string API_KEY;

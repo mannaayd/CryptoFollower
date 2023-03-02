@@ -18,8 +18,10 @@ var host = new HostBuilder()
         });
         s.AddHttpClient();
         s.AddScoped<IGetCoinInfoService, GetCoinInfoService>();
+        s.AddScoped<ITelegramNotifierService, TelegramNotifierService>();
+        s.AddScoped<IMailNotifierService, MailNotifierService>();
         s.AddScoped<INotificationUserService, NotificationUserService>();
-        s.AddScoped<INotifierService, TelegramNotifierService>();
+        s.AddScoped<IAlertTriggerService, AlertTriggerService>();
         s.AddScoped<IAzureTableRepository, AzureTableRepository>();
     })
     // .ConfigureLogging((context, builder) =>
