@@ -6,8 +6,11 @@
     "APPLICATIONINSIGHTS_CONNECTION_STRING": "",
     "FollowedCryptoCurrency": "bitcoin",
     "TargetPriceCurrencyCode": "usd",
-    "TelegramApiKey": "6054959054:AAEfYTh9XrXWK8WsudYCbwupMJFgtIYmGuY"
-    "AlertTriggerPrice": ""
+    "TelegramApiKey": "6054959054:AAEfYTh9XrXWK8WsudYCbwupMJFgtIYmGuY",
+    "IsAlertTriggerAbovePrice": "true",
+    "IsNotifiedByMail": "true",
+    "IsNotifiedByTelegram": "true",
+    "AlertTriggerPrice": "20000"
   },
   "Host": {
     "LocalHttpPort": 7071,
