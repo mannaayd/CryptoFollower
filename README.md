@@ -6,6 +6,7 @@ The function runs every 30 seconds and triggers an alert if certain conditions a
 
 The function has several configurable settings variables, including:
 | Varaible | Description |
+|----------|-------------|
 | FollowedCryptoCurrency | the ID of the coin being monitored (e.g. "bitcoin") |
 | TargetPriceCurrencyCode | the target price currency code (e.g. "usd") |
 | IsAlertTriggerAbovePrice | indicates whether the alert should trigger when the price is above the target price or below it |
