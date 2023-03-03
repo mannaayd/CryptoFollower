@@ -5,7 +5,7 @@ CryptoFollower is an Azure function designed to monitor real-time price changes 
 The function runs every 30 seconds and triggers an alert if certain conditions are met. Once the alert is triggered, the function stores the current price of the cryptocurrency into Azure Table Storage.
 
 The function has several configurable settings variables, including:
-| Varaible | Description |
+| Variable | Description |
 |----------|-------------|
 | FollowedCryptoCurrency | the ID of the coin being monitored (e.g. "bitcoin") |
 | TargetPriceCurrencyCode | the target price currency code (e.g. "usd") |
