@@ -34,7 +34,7 @@ public class AlertTriggerService : IAlertTriggerService
             await _repository.AddLastAlertData(partitionKey);
             return false;
         }
-        if(!lastAlert.Timestamp.HasValue || DateTimeOffset.Now.Subtract(lastAlert.Timestamp.Value).TotalMinutes < 5)
+        if(!lastAlert.Timestamp.HasValue || DateTimeOffset.Now.Subtract(lastAlert.Timestamp.Value).TotalMinutes < _appSettings.AlertCooldownMinutes)
             return false;
         await _repository.AddLastAlertData(partitionKey);
         return true;

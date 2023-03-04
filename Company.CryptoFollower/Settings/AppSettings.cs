@@ -8,6 +8,5 @@ public record AppSettings
     public required bool IsNotifiedByMail { get; init; }
     public required bool IsNotifiedByTelegram { get; init; }
     public required double AlertTriggerPrice { get; init; }
-
     public required int AlertCooldownMinutes { get; init; }
 }
