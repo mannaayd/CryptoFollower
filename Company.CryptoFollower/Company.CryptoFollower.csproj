@@ -17,6 +17,7 @@
         <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.2.0" />
         <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="5.1.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0-preview.1.23110.8" />
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0-preview.1.23110.8" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     </ItemGroup>
     <ItemGroup>
