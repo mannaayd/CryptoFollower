@@ -21,7 +21,7 @@ name: Deploy DotNet project to Azure Function App
 on:
   push:
     branches:
-    - ["master"]
+    - master
 
 env:
   AZURE_FUNCTIONAPP_NAME: 'CryptoFollower'   # set this to your function app name on Azure
