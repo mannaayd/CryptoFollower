@@ -6,5 +6,5 @@ public interface IAzureTableRepository
 
     Task AddLastAlertData(string partitionKey);
 
-    Task<AlertTableData> GetLastAlertData(string partitionKey);
+    Task<AlertTableData?> GetLastAlertData(string partitionKey);
 }

@@ -1,4 +1,3 @@
-using Azure.Data.Tables;
 using Company.CryptoFollower.Services;
 using Company.CryptoFollower.Settings;
 using Company.CryptoFollower.Storage;
@@ -23,20 +22,22 @@ var host = new HostBuilder()
         s.AddScoped<ITelegramNotifierService, TelegramNotifierService>();
         s.AddScoped<IMailNotifierService, MailNotifierService>();
         s.AddScoped<INotificationUserService, NotificationUserService>();
-        s.AddScoped<IAlertTriggerService, AlertTriggerService>();
         s.AddScoped<IAzureTableRepository, AzureTableRepository>();
+        s.AddScoped<IAlertTriggerService, AlertTriggerService>();
     })
-    // .ConfigureLogging((context, builder) =>
-    // {
-    //     builder.AddApplicationInsights(
-    //         configureTelemetryConfiguration: (config) => config.ConnectionString = context.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"],
-    //         configureApplicationInsightsLoggerOptions: (options) => { }
-    //     );
-    //
-    //     // Capture all log-level entries from Startup
-    //     builder.AddFilter<ApplicationInsightsLoggerProvider>(
-    //         "CryptoNotifier", LogLevel.Trace);
-    // })
+    .ConfigureLogging((context, builder) =>
+    {
+        if(bool.Parse(context.Configuration["UseAppInsightsLogging"] ?? "false"))
+            builder.AddApplicationInsights(
+                configureTelemetryConfiguration: (config) => config.ConnectionString = context.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"],
+                configureApplicationInsightsLoggerOptions: (options) =>
+                { }
+            );
+    
+        // Capture all log-level entries from Startup
+        builder.AddFilter<ApplicationInsightsLoggerProvider>(
+            "CryptoFollower", LogLevel.Trace);
+    })
     .Build();
 
 host.Run();

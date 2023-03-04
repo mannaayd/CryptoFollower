@@ -3,9 +3,17 @@
     "logging": {
         "applicationInsights": {
             "samplingSettings": {
-                "isEnabled": false,
+                "isEnabled": true,
+                "maxTelemetryItemsPerSecond" : 20,
                 "excludedTypes": "Request"
             }
+        },
+        "fileLoggingMode": "always",
+        "logLevel": {
+            "default": "Information",
+            "Host.Results": "Error",
+            "Function": "Error",
+            "Host.Aggregator": "Trace"
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿namespace Company.CryptoFollower.Settings;
 
-public class AppSettings
+public record AppSettings
 {
-    public required string FollowedCryptoCurrency { get; set; }
-    public required string TargetPriceCurrencyCode { get; set; }
-    public required bool IsAlertTriggerAbovePrice { get; set; }
-    public required bool IsNotifiedByMail { get; set; }
-    public required bool IsNotifiedByTelegram { get; set; }
-    public required double AlertTriggerPrice { get; set; }
+    public required string FollowedCryptoCurrency { get; init; }
+    public required string TargetPriceCurrencyCode { get; init; }
+    public required bool IsAlertTriggerAbovePrice { get; init; }
+    public required bool IsNotifiedByMail { get; init; }
+    public required bool IsNotifiedByTelegram { get; init; }
+    public required double AlertTriggerPrice { get; init; }
+
+    public required int AlertCooldownMinutes { get; init; }
 }
