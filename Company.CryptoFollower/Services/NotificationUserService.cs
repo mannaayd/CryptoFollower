@@ -23,7 +23,7 @@ public class NotificationUserService : INotificationUserService
 
     public async Task Notify(Coin coin)
     {
-        string message = "Alert!\nToken: " + coin.Id + "\nCurrent price: $" + coin.Price + "\n24H change: " +
+        string message = "Alert!!!\nToken: " + coin.Id + "\nCurrent price: $" + coin.Price + "\n24H change: " +
                          coin.PriceChangePercentage24H + "%\nMarket capitalization: $" + coin.MarketCapitalization;
         _logger.Log(LogLevel.Information, "Alert user. Message: {0}", message);
         if (_appSettings.IsNotifiedByTelegram)
