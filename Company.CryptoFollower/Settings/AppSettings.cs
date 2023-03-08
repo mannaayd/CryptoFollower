@@ -9,4 +9,6 @@ public record AppSettings
     public required bool IsNotifiedByTelegram { get; init; }
     public required double AlertTriggerPrice { get; init; }
     public required int AlertCooldownMinutes { get; init; }
+    public required string TelegramApiKey { get; init; }
+    public required string TelegramChatId { get; init; }
 }
