@@ -13,7 +13,6 @@ var host = new HostBuilder()
     {
         s.AddAzureClients(b =>
         {
-            // TODO add Key vault injection
             b.AddTableServiceClient(context.Configuration["AzureWebJobsStorage"]);
         });
         s.AddHttpClient();

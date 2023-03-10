@@ -26,7 +26,6 @@ public class CryptoFollower
         _logger = logger;
     }
     
-    // TODO Add notifying user about price changes via email using Azure logic app
     [Function("CryptoFollower")]
     public async Task Run([TimerTrigger("0 */5 * * * *")] MyInfo myTimer, FunctionContext context)
     {
