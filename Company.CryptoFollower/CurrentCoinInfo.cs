@@ -19,7 +19,7 @@ public class CurrentCoinInfo
     }
 
     [Function("CurrentCoinInfo")]
-    public async Task<Coin> Run([HttpTrigger(AuthorizationLevel.Function, "get")] HttpRequestData req,
+    public async Task<Coin> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestData req,
         FunctionContext executionContext)
     {
         var coin = await _getCoinInfoService.GetCoinInfo(_appSettings.FollowedCryptoCurrency, _appSettings.TargetPriceCurrencyCode);
