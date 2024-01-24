@@ -9,15 +9,14 @@ The function runs every 30 seconds and triggers an alert if certain conditions a
 The function has several configurable settings variables, including:
 | Variable | Description |
 |----------|-------------|
-| FollowedCryptoCurrency | the ID of the coin being monitored (e.g. "bitcoin") |
-| TargetPriceCurrencyCode | the target price currency code (e.g. "usd") |
+| CryptoCurrencyToWatch | the ID of the coin being monitored (e.g. "bitcoin") |
 | IsAlertTriggerAbovePrice | indicates whether the alert should trigger when the price is above the target price or below it |
-| IsNotifiedByMail | indicates whether the user should be notified by email |
-| IsNotifiedByTelegram | indicates whether the user should be notified by Telegram bot |
+| ShouldBeNotifiedByTelegram | indicates whether the user should be notified by Telegram bot |
 | TelegramApiKey | api key for your telegram bot |
 | TelegramChatId | chat id with your telegram bot |
 | AlertTriggerPrice | the target price for the alert |
 | AlertCooldownMinutes | the cooldown time between alerts to prevent spamming |
+| CheckCoinInformationSchedule | CRON expression that defines how often function will check price |
 | AzureWebJobsStorage | the connection string for the Azure storage |
 | APPLICATIONINSIGHTS_CONNECTION_STRING | the connection string for logging |
 
