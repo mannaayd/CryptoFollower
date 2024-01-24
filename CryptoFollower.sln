@@ -1,6 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.CryptoFollower", "Company.CryptoFollower\Company.CryptoFollower.csproj", "{B8B6B033-13BF-4544-A074-2970996EE49B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoFollower.Functions", "CryptoFollower.Functions\CryptoFollower.Functions.csproj", "{B8B6B033-13BF-4544-A074-2970996EE49B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoFollower.Core", "CryptoFollower.Core\CryptoFollower.Core.csproj", "{5A8C29E8-390B-4632-92C6-4EBC9B277DA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoFollower.API", "CryptoFollower.API\CryptoFollower.API.csproj", "{6C4909DF-762A-4AAF-8C4B-66F7A219C747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoFollower.Tests", "CryptoFollower.Tests\CryptoFollower.Tests.csproj", "{56943D8D-CD83-4713-A093-C7568AA90A83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +18,17 @@ Global
 		{B8B6B033-13BF-4544-A074-2970996EE49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8B6B033-13BF-4544-A074-2970996EE49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8B6B033-13BF-4544-A074-2970996EE49B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A8C29E8-390B-4632-92C6-4EBC9B277DA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A8C29E8-390B-4632-92C6-4EBC9B277DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A8C29E8-390B-4632-92C6-4EBC9B277DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A8C29E8-390B-4632-92C6-4EBC9B277DA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C4909DF-762A-4AAF-8C4B-66F7A219C747}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C4909DF-762A-4AAF-8C4B-66F7A219C747}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C4909DF-762A-4AAF-8C4B-66F7A219C747}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C4909DF-762A-4AAF-8C4B-66F7A219C747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56943D8D-CD83-4713-A093-C7568AA90A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56943D8D-CD83-4713-A093-C7568AA90A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56943D8D-CD83-4713-A093-C7568AA90A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56943D8D-CD83-4713-A093-C7568AA90A83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
