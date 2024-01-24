@@ -14,6 +14,8 @@ The function has several configurable settings variables, including:
 | IsAlertTriggerAbovePrice | indicates whether the alert should trigger when the price is above the target price or below it |
 | IsNotifiedByMail | indicates whether the user should be notified by email |
 | IsNotifiedByTelegram | indicates whether the user should be notified by Telegram bot |
+| TelegramApiKey | api key for your telegram bot |
+| TelegramChatId | chat id with your telegram bot |
 | AlertTriggerPrice | the target price for the alert |
 | AlertCooldownMinutes | the cooldown time between alerts to prevent spamming |
 | AzureWebJobsStorage | the connection string for the Azure storage |
