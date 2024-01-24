@@ -1,6 +1,6 @@
 # CryptoFollower
 
-![Deploy status](https://github.com/mannaayd/CryptoFollower/actions/workflows/azure-functions-app-dotnet.yml/badge.svg)
+![Deploy status](https://github.com/mannaayd/CryptoFollower/actions/workflows/azure-functions-app-dotnet.yml/badge.svg) [![Unit tests](https://github.com/mannaayd/CryptoFollower/actions/workflows/unit-testing-app-dotnet.yml/badge.svg)](https://github.com/mannaayd/CryptoFollower/actions/workflows/unit-testing-app-dotnet.yml)
 
 CryptoFollower is an Azure function designed to monitor real-time price changes for various cryptocurrencies. Its primary purpose is to notify users of any changes in prices via email or Telegram bot. 
 
